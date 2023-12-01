@@ -1,6 +1,7 @@
 .container {
   position: relative;
   display: flex;
+  height: 1000px;
 }
 
 .sidebar {
@@ -40,7 +41,10 @@
 .navbar {
   flex: 4;
   padding: 20px;
-  margin-left: 20%;
-  margin-right: 0.3%;
-  /* background-color: aqua; */
+  max-width: 100%; /* Set maximum width to the full width of the viewport */
+  box-sizing: border-box; /* Include padding and border in the element's total width */
+  position: fixed;
+  left: 20%; /* Maintain the same left margin as the original margin-left for the sidebar */
+  width: 80%; /* Adjust the width to balance with the sidebar */
+  z-index: -1; /* Ensure navbar stays above the sidebar */
 }
