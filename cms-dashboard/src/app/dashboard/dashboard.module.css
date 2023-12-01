@@ -48,3 +48,26 @@
   width: 80%; /* Adjust the width to balance with the sidebar */
   z-index: -1; /* Ensure navbar stays above the sidebar */
 }
+
+.wrapper {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.main {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: bisque;
+}
+.card {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.rightbar {
+  flex: 1;
+  background-color: #6baf8d;
+}

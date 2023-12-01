@@ -1,7 +1,7 @@
 export default function Chart() {
   return (
     <>
-      <h1>Card Components</h1>
+      <h1>Chart Components</h1>
     </>
   );
 }
