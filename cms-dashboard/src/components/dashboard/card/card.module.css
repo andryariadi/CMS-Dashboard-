@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--bgSoft);
+  cursor: pointer;
+  width: clamp(50px, 100%, 100%);
+  z-index: 999;
+}
+
+.container:hover {
+  background-color: #2e374a !important;
+  transition: all 1s ease;
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.titleUser {
+}
+.value {
+  font-size: 24px;
+  font-weight: 500;
+}
+.detail {
+  font-size: 14px;
+  font-weight: 300;
+}
+.positive {
+  margin-right: 5px;
+  color: limegreen;
+}
