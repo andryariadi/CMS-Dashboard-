@@ -1,4 +1,5 @@
 .container {
+  position: relative;
   display: flex;
 }
 
@@ -6,39 +7,40 @@
   flex: 1;
   background-color: var(--bgSoft);
   padding: 20px;
-  top: 0;
-  /* position: fixed; */
-  /* left: 0; */
-  /* bottom: 0; */
-  /* overflow-y: auto; */
-  /* min-width: 300px; */
-
-  /* scrollbar */
-  .sidebar {
-    --sb-track-color: #232e33;
-    --sb-thumb-color: #6baf8d;
-    --sb-size: 8px;
-
-    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
-  }
-
-  .sidebar::-webkit-scrollbar {
-    width: var(--sb-size);
-  }
-
-  .sidebar::-webkit-scrollbar-track {
-    background: var(--sb-track-color);
-    border-radius: 10px;
-  }
-
-  .sidebar::-webkit-scrollbar-thumb {
-    background: var(--sb-thumb-color);
-    border-radius: 10px;
-  }
-  /* scrollbar */
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+  min-width: 300px;
 }
+
+/* scrollbar */
+.sidebar {
+  --sb-track-color: #232e33;
+  --sb-thumb-color: #6baf8d;
+  --sb-size: 10px;
+
+  scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+}
+
+.sidebar::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 19px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 19px;
+}
+/* scrollbar */
 
 .navbar {
   flex: 4;
   padding: 20px;
+  margin-left: 20%;
+  margin-right: 0.3%;
+  background-color: aqua;
 }
