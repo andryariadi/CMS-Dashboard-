@@ -1,5 +1,5 @@
 .container {
-  position: relative;
+  /* position: relative; */
   display: flex;
 }
 
@@ -86,11 +86,15 @@
   flex-direction: column;
   gap: 20px;
 }
+
 .card {
   display: flex;
   justify-content: space-between;
   gap: 20px;
 }
+
 .rightbar {
   flex: 1;
+  position: sticky;
+  top: 0;
 }
