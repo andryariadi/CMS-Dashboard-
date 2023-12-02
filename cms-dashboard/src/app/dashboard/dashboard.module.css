@@ -52,7 +52,33 @@
   display: flex;
   gap: 20px;
   margin-top: 20px;
+  overflow-y: auto;
+  height: 100vh;
 }
+
+/* wrapper scrollbar */
+.wrapper {
+  --sb-track-color: #232e33;
+  --sb-thumb-color: #6baf8d;
+  --sb-size: 10px;
+
+  scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+}
+
+.wrapper::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.wrapper::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 10px;
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 10px;
+}
+/* wrapper scrollbar */
 
 .main {
   flex: 3;
