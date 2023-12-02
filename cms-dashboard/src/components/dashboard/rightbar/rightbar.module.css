@@ -1,8 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  width: 280px;
+  gap: 10px 20px;
 }
 
 .item {
@@ -12,7 +11,7 @@
   gap: 20px;
   padding: 20px;
   border-radius: 10px;
-  background-color: var(--bgSoft);
+  background: linear-gradient(to top, #182237, #253352);
   cursor: pointer;
 }
 
@@ -25,6 +24,42 @@
 }
 
 .image {
-  object-fit: cover;
+  object-fit: contain;
   opacity: 0.2;
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  gap: 15px 20px;
+}
+
+.notification {
+  font-weight: bold;
+  /* font-size: 10px; */
+}
+
+.title {
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+}
+
+.subtitle,
+.description {
+  font-size: 12px;
+  color: var(--textSoft);
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background-color: #5d57c9;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: fit-content;
 }
