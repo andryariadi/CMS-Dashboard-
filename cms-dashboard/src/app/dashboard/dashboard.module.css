@@ -40,12 +40,12 @@
 .navbar {
   flex: 4;
   padding: 20px;
-  max-width: 100%; /* Set maximum width to the full width of the viewport */
-  box-sizing: border-box; /* Include padding and border in the element's total width */
+  max-width: 100%;
+  /* min-width: 80%; */
+  box-sizing: border-box;
   position: fixed;
-  left: 20%; /* Maintain the same left margin as the original margin-left for the sidebar */
-  width: 80%; /* Adjust the width to balance with the sidebar */
-  z-index: -1; /* Ensure navbar stays above the sidebar */
+  left: 20%;
+  z-index: -1;
 }
 
 .wrapper {
