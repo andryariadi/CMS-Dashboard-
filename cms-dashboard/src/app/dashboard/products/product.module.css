@@ -1,0 +1,80 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: var(--bgSoft);
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+/* header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btnAdd {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  padding: 7px 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #5d57c9;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--textSoft);
+}
+/* header */
+
+/* table */
+.table {
+  width: 100%;
+}
+
+.table td {
+  padding: 10px;
+}
+.user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.userImg {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.btnContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  padding: 7px 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--textSoft);
+}
+
+.edit {
+  background-color: teal;
+}
+
+.delete {
+  background-color: crimson;
+}
+/* table */

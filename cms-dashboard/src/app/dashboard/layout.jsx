@@ -1,7 +1,7 @@
 import Navbar from "@/components/dashboard/navbar/navbar";
 import Sidebar from "@/components/dashboard/sidebar/sidebar";
-import styles from "./dashboard.module.css";
 import Footer from "@/components/dashboard/footer/footer";
+import styles from "./dashboard.module.css";
 
 export default function DashboardLayout({ children }) {
   return (

@@ -13,5 +13,10 @@
   font-weight: 600;
   letter-spacing: 0.5px;
   color: var(--textSoft);
-  background-color: var(--bg);
+  background-color: mediumorchid;
+}
+
+.button:disabled {
+  /* opacity: 0.5; */
+  cursor: not-allowed;
 }
