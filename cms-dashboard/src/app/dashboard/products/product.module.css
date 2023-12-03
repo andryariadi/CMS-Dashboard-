@@ -39,13 +39,14 @@
 .table td {
   padding: 10px;
 }
-.user {
+
+.product {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.userImg {
+.productImg {
   border-radius: 50%;
   object-fit: cover;
 }

@@ -36,7 +36,7 @@ export default function UsersPage() {
             <tr>
               <td>
                 <div className={styles.user}>
-                  <Image src={user} alt="user" width={40} height={40} className={styles.userImg} />
+                  <Image src={user} alt="user" width={50} height={50} className={styles.userImg} />
                   Andry Ariadi
                 </div>
               </td>

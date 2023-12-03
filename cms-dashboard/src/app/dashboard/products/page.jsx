@@ -1,9 +1,9 @@
 import Search from "@/components/dashboard/search/search";
 import styles from "./product.module.css";
 import Link from "next/link";
-import { BsPersonFillAdd } from "react-icons/bs";
+import { BsFillCartPlusFill } from "react-icons/bs";
 import Image from "next/image";
-import user from "@/assets/users.png";
+import product from "@/assets/noproduct.jpg";
 import { RiEditFill } from "react-icons/ri";
 import { AiFillDelete } from "react-icons/ai";
 import Pagination from "@/components/dashboard/pagination/pagination";
@@ -16,37 +16,37 @@ export default function ProductPage() {
           <Search placeholder="Search Products..." />
           <Link href="/dashboard/products/add">
             <button className={styles.btnAdd}>
-              <BsPersonFillAdd size={20} />
-              User
+              <BsFillCartPlusFill size={20} />
+              Product
             </button>
           </Link>
         </div>
         <table className={styles.table}>
           <thead>
             <tr>
-              <td>Name</td>
-              <td>Email</td>
-              <td>Create At</td>
-              <td>Role</td>
-              <td>Status</td>
+              <td>Title</td>
+              <td>Description</td>
+              <td>Price</td>
+              <td>Created At</td>
+              <td>Stock</td>
               <td>Action</td>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>
-                <div className={styles.user}>
-                  <Image src={user} alt="user" width={40} height={40} className={styles.userImg} />
-                  Andry Ariadi
+                <div className={styles.product}>
+                  <Image src={product} alt="product" width={50} height={50} className={styles.productImg} />
+                  iPhone
                 </div>
               </td>
-              <td>andryariadi23@gmail.com</td>
+              <td>Lorem ipsum dolor sit amet.</td>
+              <td>$1234</td>
               <td>03.12.2023</td>
-              <td>Admin</td>
-              <td>active</td>
+              <td>23</td>
               <td>
                 <div className={styles.btnContainer}>
-                  <Link href="/dashboard/users/edit">
+                  <Link href="/dashboard/products/edit">
                     <button className={`${styles.button} ${styles.edit}`}>
                       <RiEditFill size={20} />
                       View
