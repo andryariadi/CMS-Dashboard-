@@ -5,18 +5,25 @@ export default function AddUserPage() {
     <>
       <div className={styles.container}>
         <form action="" className={styles.form}>
-          <input type="text" placeholder="Title" name="title" required />
-          <select name="category" id="category">
-            <option value="general">Choose Category</option>
-            <option value="electronic">Electronic</option>
-            <option value="men's clothing">Men's clothing</option>
-            <option value="women's clothing">Women's clothing</option>
+          <input type="text" placeholder="Username" name="username" required />
+          <input type="email" placeholder="Email" name="email" required />
+          <input type="password" placeholder="Password" name="password" required />
+          <input type="phone" placeholder="Phone" name="phone" />
+          <select name="isAdmin" id="isAdmin">
+            <option value={false} selected>
+              Is Admin
+            </option>
+            <option value={true}>Yes</option>
+            <option value={false}>No</option>
           </select>
-          <input type="number" placeholder="Price" name="price" required />
-          <input type="number" placeholder="Stock" name="stock" required />
-          <input type="text" placeholder="Color" name="color" required />
-          <input type="text" placeholder="Size" name="size" required />
-          <textarea name="description" id="description" rows="10" placeholder="Description"></textarea>
+          <select name="isActive" id="isActive">
+            <option value={true} selected>
+              Is Active
+            </option>
+            <option value={true}>Yes</option>
+            <option value={false}>No</option>
+          </select>
+          <textarea name="address" id="address" rows="10" placeholder="Address"></textarea>
           <button type="submit">Submit</button>
         </form>
       </div>
