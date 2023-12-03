@@ -6,6 +6,7 @@ import Image from "next/image";
 import user from "@/assets/users.png";
 import { RiEditFill } from "react-icons/ri";
 import { AiFillDelete } from "react-icons/ai";
+import Pagination from "@/components/dashboard/pagination/pagination";
 
 export default function UsersPage() {
   return (
@@ -60,6 +61,7 @@ export default function UsersPage() {
             </tr>
           </tbody>
         </table>
+        <Pagination />
       </div>
     </>
   );
