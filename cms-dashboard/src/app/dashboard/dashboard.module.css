@@ -8,8 +8,8 @@
   background-color: var(--bgSoft);
   padding: 20px;
   position: fixed;
-  min-height: 100vh;
-  overflow-y: auto;
+  overflow: auto;
+  height: 100vh;
   min-width: 300px;
 }
 
