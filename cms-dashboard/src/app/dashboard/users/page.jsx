@@ -46,7 +46,7 @@ export default function UsersPage() {
               <td>active</td>
               <td>
                 <div className={styles.btnContainer}>
-                  <Link href="/dashboard/users/edit">
+                  <Link href="/dashboard/users/:id">
                     <button className={`${styles.button} ${styles.edit}`}>
                       <RiEditFill size={20} />
                       View

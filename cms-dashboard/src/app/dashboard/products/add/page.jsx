@@ -1,4 +1,4 @@
-import styles from "./add.module.css";
+import styles from "./addProduct.module.css";
 
 export default function AddProductPage() {
   return (

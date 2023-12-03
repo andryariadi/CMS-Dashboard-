@@ -1,4 +1,4 @@
-import styles from "./add.module.css";
+import styles from "./addUser.module.css";
 
 export default function AddUserPage() {
   return (
