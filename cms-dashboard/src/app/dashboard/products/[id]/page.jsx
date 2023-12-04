@@ -1,38 +1,37 @@
 import Image from "next/image";
-import styles from "./detailuser.module.css";
-import user from "@/assets/users.png";
-export default function DetailUserPage() {
+import styles from "./detailproduct.module.css";
+import product from "@/assets/noproduct.jpg";
+export default function DetailProductPage() {
   return (
     <>
       <div className={styles.container}>
         <div className={styles.user}>
           <div className={styles.imgContainer}>
-            <Image src={user} alt="User" fill />
+            <Image src={product} alt="User" fill />
           </div>
-          Andry Ariadi
+          iPhone
         </div>
         <div className={styles.formContainer}>
           <form action="" className={styles.form}>
-            <label>Username</label>
-            <input type="text" name="username" placeholder="Andry Ariadi" />
-            <label>Email</label>
-            <input type="email" name="email" placeholder="andryariad23@gmail.com" />
-            <label>Password</label>
-            <input type="password" name="password" placeholder="********" />
-            <label>Phone</label>
-            <input type="phone" name="phone" placeholder="123456789" />
-            <label>Address</label>
-            <textarea name="address" id="" cols="30" rows="2" placeholder="Malang City" />
-            <label>Is Admin ?</label>
-            <select name="isAdmin" id="isAdmin">
-              <option value={true}>Yes</option>
-              <option value={false}>No</option>
+            <label>Title</label>
+            <input type="text" name="title" placeholder="Andry Ariadi" />
+            <label>Price</label>
+            <input type="number" name="price" placeholder="andryariad23@gmail.com" />
+            <label>Stock</label>
+            <input type="number" name="stock" placeholder="********" />
+            <label>Color</label>
+            <input type="text" name="color" placeholder="123456789" />
+            <label>Size</label>
+            <input type="text" name="size" placeholder="123456789" />
+            <label>Category</label>
+            <select name="category" id="category">
+              <option value="general">Choose Category</option>
+              <option value="electronic">Electronic</option>
+              <option value="men's clothing">Men's clothing</option>
+              <option value="women's clothing">Women's clothing</option>
             </select>
-            <label>Is Active ?</label>
-            <select name="isActive" id="isActive">
-              <option value={true}>Yes</option>
-              <option value={false}>No</option>
-            </select>
+            <label>Description</label>
+            <textarea name="description" id="description" rows="2"></textarea>
             <button type="submit">Update</button>
           </form>
         </div>
