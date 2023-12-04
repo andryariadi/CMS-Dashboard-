@@ -1,0 +1,61 @@
+.container {
+  display: flex;
+  gap: 50px;
+  margin-top: 15px;
+}
+
+.user {
+  flex: 1;
+  background-color: var(--bgSoft);
+  padding: 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: var(--textSoft);
+  height: max-content;
+}
+
+.imgContainer {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.formContainer {
+  flex: 3;
+  background-color: var(--bgSoft);
+  padding: 15px 20px;
+  border-radius: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form > *:not(button, label) {
+  padding: 10px;
+  background-color: var(--bg);
+  color: var(--text);
+  border-radius: 5px;
+  border: 2px solid #2e374a;
+}
+
+.form label {
+  font-size: 12px;
+  margin-bottom: -5px;
+}
+
+.form button {
+  padding: 7px;
+  border-radius: 5px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--textSoft);
+  background-color: teal;
+}
