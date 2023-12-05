@@ -12,7 +12,7 @@ export default function Search({ placeholder }) {
     const params = new URLSearchParams(searchParam);
 
     if (e.target.value) {
-      params.set("q", e.target.value);
+      e.target.value.length > 2 && params.set("q", e.target.value);
     } else {
       params.delete("q");
     }
