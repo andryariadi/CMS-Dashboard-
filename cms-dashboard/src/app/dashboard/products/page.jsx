@@ -3,12 +3,18 @@ import styles from "./product.module.css";
 import Link from "next/link";
 import { BsFillCartPlusFill } from "react-icons/bs";
 import Image from "next/image";
-import product from "@/assets/noproduct.jpg";
+import productImg from "@/assets/noproduct.jpg";
 import { RiEditFill } from "react-icons/ri";
 import { AiFillDelete } from "react-icons/ai";
 import Pagination from "@/components/dashboard/pagination/pagination";
+import { fetchProduct } from "@/libs/data";
 
-export default function ProductPage() {
+export default async function ProductPage({ searchParams }) {
+  const q = searchParams?.q || "";
+  const page = searchParams?.page || 1;
+  const { products, count } = await fetchProduct(q, page);
+
+  console.log(products, "<----diproduct page");
   return (
     <>
       <div className={styles.container}>
@@ -32,36 +38,38 @@ export default function ProductPage() {
               <td>Action</td>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>
-                <div className={styles.product}>
-                  <Image src={product} alt="product" width={50} height={50} className={styles.productImg} />
-                  iPhone
-                </div>
-              </td>
-              <td>Lorem ipsum dolor sit amet.</td>
-              <td>$1234</td>
-              <td>03.12.2023</td>
-              <td>23</td>
-              <td>
-                <div className={styles.btnContainer}>
-                  <Link href="/dashboard/products/edit">
-                    <button className={`${styles.button} ${styles.edit}`}>
-                      <RiEditFill size={20} />
-                      View
+          {products.map((product) => (
+            <tbody>
+              <tr key={product.id}>
+                <td>
+                  <div className={styles.product}>
+                    <Image src={product.img || productImg} alt="product" width={50} height={50} className={styles.productImg} />
+                    {product.title}
+                  </div>
+                </td>
+                <td>{product.description}</td>
+                <td>$ {product.price}</td>
+                <td>{product.createdAt?.toString().slice(4, 15)}</td>
+                <td>{product.stock}</td>
+                <td>
+                  <div className={styles.btnContainer}>
+                    <Link href={`/dashboard/products/${product.id}`}>
+                      <button className={`${styles.button} ${styles.edit}`}>
+                        <RiEditFill size={20} />
+                        View
+                      </button>
+                    </Link>
+                    <button className={`${styles.button} ${styles.delete}`}>
+                      <AiFillDelete size={20} />
+                      Delete
                     </button>
-                  </Link>
-                  <button className={`${styles.button} ${styles.delete}`}>
-                    <AiFillDelete size={20} />
-                    Delete
-                  </button>
-                </div>
-              </td>
-            </tr>
-          </tbody>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          ))}
         </table>
-        <Pagination />
+        <Pagination count={count} />
       </div>
     </>
   );

@@ -12,10 +12,9 @@ import { fetchUser } from "@/libs/data";
 export default async function UsersPage({ searchParams }) {
   const q = searchParams?.q || "";
   const page = searchParams?.page || 1;
-
   const { users, count } = await fetchUser(q, page);
 
-  console.log(users, "<----diuser page");
+  // console.log(users, "<----diuser page");
   return (
     <>
       <div className={styles.container}>
