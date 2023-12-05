@@ -25,48 +25,50 @@ export default async function UsersPage() {
             </button>
           </Link>
         </div>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <td>Name</td>
-              <td>Email</td>
-              <td>Create At</td>
-              <td>Role</td>
-              <td>Status</td>
-              <td>Action</td>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => (
-              <tr key={user.id}>
-                <td>
-                  <div className={styles.user}>
-                    <Image src={user.img || userAvtr} alt="user" width={50} height={50} className={styles.userImg} />
-                    {user.username}
-                  </div>
-                </td>
-                <td>{user.email}</td>
-                <td>{user.createdAt?.toString().slice(4, 15)}</td>
-                <td>{user.isAdmin ? "Admin" : "User"}</td>
-                <td>{user.isActive ? "Active" : "Passive"}</td>
-                <td>
-                  <div className={styles.btnContainer}>
-                    <Link href={`/dashboard/users/${user.id}`}>
-                      <button className={`${styles.button} ${styles.edit}`}>
-                        <RiEditFill size={20} />
-                        View
-                      </button>
-                    </Link>
-                    <button className={`${styles.button} ${styles.delete}`}>
-                      <AiFillDelete size={20} />
-                      Delete
-                    </button>
-                  </div>
-                </td>
+        <div className={styles.tableContainer}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Create At</td>
+                <td>Role</td>
+                <td>Status</td>
+                <td>Action</td>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {users.map((user) => (
+                <tr key={user.id}>
+                  <td>
+                    <div className={styles.user}>
+                      <Image src={user.img || userAvtr} alt="user" width={50} height={50} className={styles.userImg} />
+                      {user.username}
+                    </div>
+                  </td>
+                  <td>{user.email}</td>
+                  <td>{user.createdAt?.toString().slice(4, 15)}</td>
+                  <td>{user.isAdmin ? "Admin" : "User"}</td>
+                  <td>{user.isActive ? "Active" : "Passive"}</td>
+                  <td>
+                    <div className={styles.btnContainer}>
+                      <Link href={`/dashboard/users/${user.id}`}>
+                        <button className={`${styles.button} ${styles.edit}`}>
+                          <RiEditFill size={20} />
+                          View
+                        </button>
+                      </Link>
+                      <button className={`${styles.button} ${styles.delete}`}>
+                        <AiFillDelete size={20} />
+                        Delete
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
         <Pagination />
       </div>
     </>
