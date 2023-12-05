@@ -9,8 +9,10 @@ import { AiFillDelete } from "react-icons/ai";
 import Pagination from "@/components/dashboard/pagination/pagination";
 import { fetchUser } from "@/libs/data";
 
-export default async function UsersPage() {
-  const users = await fetchUser();
+export default async function UsersPage({ searchParams }) {
+  const q = searchParams?.q || "";
+
+  const users = await fetchUser(q);
 
   console.log(users, "<----diuser page");
   return (
