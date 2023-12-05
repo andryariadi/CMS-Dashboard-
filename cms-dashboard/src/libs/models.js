@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema(
       type: String,
     },
   },
-  { timeseries: true }
+  { timestamps: true }
 );
 
 const productSchema = new mongoose.Schema(
@@ -74,7 +74,7 @@ const productSchema = new mongoose.Schema(
       type: String,
     },
   },
-  { timeseries: true }
+  { timestamps: true }
 );
 
 export const User = mongoose.models.User || mongoose.model("User", userSchema);
