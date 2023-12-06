@@ -1,37 +1,51 @@
 import Image from "next/image";
 import styles from "./detailproduct.module.css";
-import product from "@/assets/noproduct.jpg";
-export default function DetailProductPage() {
+import productImg from "@/assets/noproduct.jpg";
+import { fetchDetailProduct } from "@/libs/data";
+import { updateProduct } from "@/libs/actions";
+export default async function DetailProductPage({ params }) {
+  const { id } = params;
+  const product = await fetchDetailProduct(id);
+
+  console.log(product, "<----didetailproduct page");
+
   return (
     <>
       <div className={styles.container}>
         <div className={styles.user}>
           <div className={styles.imgContainer}>
-            <Image src={product} alt="User" fill />
+            <Image src={product.img || productImg} alt="User" fill />
           </div>
-          iPhone
+          {product.title}
         </div>
         <div className={styles.formContainer}>
-          <form action="" className={styles.form}>
+          <form action={updateProduct} className={styles.form}>
+            <input type="hidden" name="id" value={product.id} />
             <label>Title</label>
-            <input type="text" name="title" placeholder="Andry Ariadi" />
+            <input type="text" name="title" placeholder={product.title} />
             <label>Price</label>
-            <input type="number" name="price" placeholder="andryariad23@gmail.com" />
+            <input type="number" name="price" placeholder={product.price} />
             <label>Stock</label>
-            <input type="number" name="stock" placeholder="********" />
+            <input type="number" name="stock" placeholder={product.stock} />
             <label>Color</label>
-            <input type="text" name="color" placeholder="123456789" />
+            <input type="text" name="color" placeholder={product.color} />
             <label>Size</label>
-            <input type="text" name="size" placeholder="123456789" />
+            <input type="text" name="size" placeholder={product.size} />
             <label>Category</label>
             <select name="category" id="category">
               <option value="general">Choose Category</option>
-              <option value="electronic">Electronic</option>
-              <option value="men's clothing">Men's clothing</option>
-              <option value="women's clothing">Women's clothing</option>
+              <option value="electronic" selected={product.category}>
+                Electronic
+              </option>
+              <option value="men's clothing" selected={product.category}>
+                Men's clothing
+              </option>
+              <option value="women's clothing" selected={product.category}>
+                Women's clothing
+              </option>
             </select>
             <label>Description</label>
-            <textarea name="description" id="description" rows="2"></textarea>
+            <textarea name="description" id="description" rows="2" placeholder={product.description}></textarea>
             <button type="submit">Update</button>
           </form>
         </div>

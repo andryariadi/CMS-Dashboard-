@@ -7,7 +7,7 @@ export default async function DetailUserPage({ params }) {
   const { id } = params;
   const user = await fetchDetailUser(id);
 
-  console.log(user, "<----didetailuser page");
+  // console.log(user, "<----didetailuser page");
 
   return (
     <>
