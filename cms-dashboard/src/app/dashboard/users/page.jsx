@@ -8,6 +8,7 @@ import { RiEditFill } from "react-icons/ri";
 import { AiFillDelete } from "react-icons/ai";
 import Pagination from "@/components/dashboard/pagination/pagination";
 import { fetchUser } from "@/libs/data";
+import { deleteUser } from "@/libs/actions";
 
 export default async function UsersPage({ searchParams }) {
   const q = searchParams?.q || "";
@@ -60,10 +61,13 @@ export default async function UsersPage({ searchParams }) {
                           View
                         </button>
                       </Link>
-                      <button className={`${styles.button} ${styles.delete}`}>
-                        <AiFillDelete size={20} />
-                        Delete
-                      </button>
+                      <form action={deleteUser}>
+                        <input type="hidden" name="id" value={user.id} />
+                        <button type="submit" className={`${styles.button} ${styles.delete}`}>
+                          <AiFillDelete size={20} />
+                          Delete
+                        </button>
+                      </form>
                     </div>
                   </td>
                 </tr>

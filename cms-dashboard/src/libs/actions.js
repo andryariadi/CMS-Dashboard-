@@ -61,6 +61,19 @@ export const addUser = async (formData) => {
   revalidatePath("/dashboard/users");
   redirect("/dashboard/users");
 };
+export const deleteUser = async (formData) => {
+  const { id } = Object.fromEntries(formData);
+
+  try {
+    connectToDB();
+    await User.findByIdAndDelete(id);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to delete user!");
+  }
+
+  revalidatePath("/dashboard/users");
+};
 export const addProduct = async (formData) => {
   const { title, category, description, price, stock, color, size } = Object.fromEntries(formData);
 
