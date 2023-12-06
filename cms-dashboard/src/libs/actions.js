@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { User } from "./models";
 import { connectToDB } from "./utility";
 import { redirect } from "next/navigation";
+import bcrypt from "bcrypt";
 
 export const addUser = async (formData) => {
   const { username, email, password, phone, isAdmin, isActive, address } = Object.fromEntries(formData);
@@ -39,11 +40,12 @@ export const addUser = async (formData) => {
     // if (isActive === "false" && phone) {
     //   throw new Error("User cannot have a phone number if not active!");
     // }
-
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
     const newUser = new User({
       username,
       email,
-      password,
+      password: hashedPassword,
       phone,
       isAdmin,
       isActive,
