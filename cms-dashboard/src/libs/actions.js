@@ -1,10 +1,12 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { User } from "./models";
 import { connectToDB } from "./utility";
+import { redirect } from "next/navigation";
 
 export const addUser = async (formData) => {
-  const { username, email, password, phone, isAdmin, isActive, address } = formData;
+  const { username, email, password, phone, isAdmin, isActive, address } = Object.fromEntries(formData);
 
   try {
     connectToDB();
@@ -53,4 +55,7 @@ export const addUser = async (formData) => {
     console.log(err);
     throw new Error("Failed to add user!");
   }
+
+  revalidatePath("/dashboard/users");
+  redirect("/dashboard/users");
 };
