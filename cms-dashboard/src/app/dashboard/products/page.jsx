@@ -8,6 +8,7 @@ import { RiEditFill } from "react-icons/ri";
 import { AiFillDelete } from "react-icons/ai";
 import Pagination from "@/components/dashboard/pagination/pagination";
 import { fetchProduct } from "@/libs/data";
+import { deleteProduct } from "@/libs/actions";
 
 export default async function ProductPage({ searchParams }) {
   const q = searchParams?.q || "";
@@ -59,10 +60,13 @@ export default async function ProductPage({ searchParams }) {
                         View
                       </button>
                     </Link>
-                    <button className={`${styles.button} ${styles.delete}`}>
-                      <AiFillDelete size={20} />
-                      Delete
-                    </button>
+                    <form action={deleteProduct}>
+                      <input type="hidden" name="id" value={product.id} />
+                      <button className={`${styles.button} ${styles.delete}`}>
+                        <AiFillDelete size={20} />
+                        Delete
+                      </button>
+                    </form>
                   </div>
                 </td>
               </tr>

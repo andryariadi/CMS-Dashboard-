@@ -1,10 +1,11 @@
+import { addProduct } from "@/libs/actions";
 import styles from "./addProduct.module.css";
 
 export default function AddProductPage() {
   return (
     <>
       <div className={styles.container}>
-        <form action="" className={styles.form}>
+        <form action={addProduct} className={styles.form}>
           <input type="text" placeholder="Title" name="title" required />
           <select name="category" id="category">
             <option value="general">Choose Category</option>
