@@ -1,7 +1,14 @@
 // next.config.js
 const nextConfig = {
   images: {
-    domains: ["images.pexels.com", "www.pexels.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.pexels.com",
+        port: "",
+        pathname: "/**",
+      },
+    ],
   },
 };
 
