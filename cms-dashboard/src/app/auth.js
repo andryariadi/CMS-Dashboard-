@@ -1,25 +1,3 @@
-# CMS-Dashboard-
-
-export const authConfig = {
-pages: {
-signIn: "/login",
-},
-callbacks: {
-authorized({ auth, request }) {
-const isLoggedIn = auth?.user;
-const isOnDashboard = request.nextUrl.pathname.startsWith("/dashboard");
-if (isOnDashboard) {
-if (isLoggedIn) return true;
-return false; // Redirect unauthenticated users to login page
-} else if (isLoggedIn) {
-return Response.redirect(new URL("/dashboard", request.nextUrl));
-}
-return true;
-},
-},
-providers: [], // Add providers with an empty array for now
-};
-
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { authConfig } from "./authconfig";
@@ -28,8 +6,8 @@ import { User } from "../libs/models";
 import bcrypt from "bcrypt";
 
 const login = async (credentials) => {
-try {
-connectToDB();
+  try {
+    connectToDB();
 
     const user = await User.findOne({
       username: credentials.username,
@@ -55,35 +33,42 @@ connectToDB();
     if (!isPasswordCorrect) throw new Error("Password is incorrect!");
 
     return user;
-
-} catch (err) {
-console.log(err);
-throw new Error("Failed to login!");
-}
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to login!");
+  }
 };
 
 export const { signIn, signOut, auth } = NextAuth({
-...authConfig,
-providers: [
-CredentialsProvider({
-async authorize(credentials) {
-try {
-const user = await login(credentials);
-return user;
-} catch (err) {
-return null;
-}
-},
-}),
-],
+  ...authConfig,
+  providers: [
+    CredentialsProvider({
+      async authorize(credentials) {
+        try {
+          const user = await login(credentials);
+          return user;
+        } catch (err) {
+          return null;
+        }
+      },
+    }),
+  ],
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.username = user.username;
+        token.img = user.img;
+        token.isAdmin = user.isAdmin;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (token) {
+        session.user.username = token.username;
+        session.user.img = token.img;
+        session.user.isAdmin = token.isAdmin;
+      }
+      return session;
+    },
+  },
 });
-
-import NextAuth from "next-auth";
-import { authConfig } from "./app/authconfig";
-
-export default NextAuth(authConfig).auth;
-
-export const config = {
-// https://nextjs.org/docs/app/building-your-application/routing/middleware#matcher
-matcher: ["/((?!api|_next/static|_next/image|.*\\.png$).*)"],
-};
