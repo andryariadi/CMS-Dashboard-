@@ -5,7 +5,6 @@
 }
 
 .item {
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -13,6 +12,7 @@
   border-radius: 10px;
   background: linear-gradient(to top, #182237, #253352);
   cursor: pointer;
+  height: 290px;
 }
 
 .bgImage {

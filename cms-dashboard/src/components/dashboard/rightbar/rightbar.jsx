@@ -1,14 +1,17 @@
+import Chart1 from "./chart1/chart1";
+import Chart2 from "./chart2/chart2";
 import styles from "./rightbar.module.css";
-import Image from "next/image";
-import astronaut from "@/assets/astronaut.png";
-import { MdPlayCircleFilled, MdReadMore } from "react-icons/md";
+// import Image from "next/image";
+// import astronaut from "@/assets/astronaut.png";
+// import { MdPlayCircleFilled, MdReadMore } from "react-icons/md";
 
 export default function Rightbar() {
   return (
     <>
       <div className={styles.container}>
         <div className={styles.item}>
-          <div className={styles.bgImage}>
+          <Chart1 />
+          {/* <div className={styles.bgImage}>
             <Image src={astronaut} alt="astro" fill className={styles.image} />
           </div>
           <div className={styles.texts}>
@@ -20,10 +23,11 @@ export default function Rightbar() {
               <MdPlayCircleFilled />
               Watch
             </button>
-          </div>
+          </div> */}
         </div>
         <div className={styles.item}>
-          <div className={styles.texts}>
+          <Chart2 />
+          {/* <div className={styles.texts}>
             <span className={styles.notification}>🚀 Coming Soon</span>
             <h3 className={styles.title}>New server actions are available, partial pre-rendering is coming up!</h3>
             <span className={styles.subtitle}>Boost your productivity</span>
@@ -32,7 +36,7 @@ export default function Rightbar() {
               <MdReadMore />
               Learn
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
