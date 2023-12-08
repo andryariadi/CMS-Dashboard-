@@ -182,6 +182,6 @@ export const authenticate = async (formData) => {
     await signIn("credentials", { username, password });
   } catch (err) {
     console.log(err);
-    throw new Error("Failed to authenticate user!");
+    return { error: "Wrong credentials!" };
   }
 };

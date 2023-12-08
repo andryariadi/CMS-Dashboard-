@@ -11,7 +11,7 @@
   gap: 30px;
 }
 
-.form > :not(button, h1) {
+.form > :not(button, h1, p) {
   width: 100%;
   padding: 20px;
   background-color: var(--bg);
@@ -30,4 +30,12 @@
   color: var(--text);
   font-weight: 600;
   cursor: pointer;
+}
+
+.error {
+  color: crimson;
+  padding: 10px;
+  background-color: transparent;
+  border: 2px solid crimson;
+  border-radius: 5px;
 }
