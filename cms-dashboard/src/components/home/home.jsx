@@ -17,7 +17,7 @@ export default function HomeComponent() {
             <RiLoginCircleFill size={24} />
             Login
           </Link>
-          <Link href="/registeruser" className={styles.register}>
+          <Link href="/register" className={styles.register}>
             <FaUserEdit size={24} />
             Register
           </Link>
