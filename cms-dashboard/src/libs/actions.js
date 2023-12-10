@@ -7,6 +7,33 @@ import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
 import { signIn } from "@/app/auth";
 
+export const register = async (formData) => {
+  const { username, email, password, phone, isAdmin, isActive, address, img } = Object.fromEntries(formData);
+
+  try {
+    connectToDB();
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    const newUser = new User({
+      username,
+      email,
+      password: hashedPassword,
+      phone,
+      isAdmin,
+      isActive,
+      address,
+      img,
+    });
+
+    await newUser.save();
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to register!");
+  }
+
+  revalidatePath("/login");
+  redirect("/login");
+};
 export const addUser = async (formData) => {
   const { username, email, password, phone, isAdmin, isActive, address } = Object.fromEntries(formData);
 
