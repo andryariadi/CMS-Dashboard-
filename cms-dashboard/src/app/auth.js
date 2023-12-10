@@ -1,74 +1,75 @@
-import NextAuth from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
-import { authConfig } from "./authconfig";
-import { connectToDB } from "../libs/utility";
-import { User } from "../libs/models";
-import bcrypt from "bcrypt";
+// import NextAuth from "next-auth";
+// import CredentialsProvider from "next-auth/providers/credentials";
+// import { authConfig } from "./authconfig";
+// import { connectToDB } from "../libs/utility";
+// import { User } from "../libs/models";
+// import bcrypt from "bcrypt";
 
-const login = async (credentials) => {
-  try {
-    connectToDB();
+// const login = async (credentials) => {
+//   try {
+//     connectToDB();
 
-    const user = await User.findOne({
-      username: credentials.username,
-    });
+//     const user = await User.findOne({
+//       username: credentials.username,
+//     });
 
-    console.log(user, "<----diauth.js user boss");
-    console.log(credentials, "<----diauth.js credentials boss");
-    console.log(typeof credentials.password); // pastikan ini adalah string
-    console.log(typeof user.password); // pastikan ini juga adalah string
-    console.log(credentials.password.length); // pastikan panjangnya sesuai
-    console.log(user.password.length); // pastikan panjangnya sesuai
-    console.log(user.password, "<----diauth.js userpass boss");
-    console.log(credentials.password, "<----diauth.js credentialspass boss");
+//     console.log(user, "<----diauth.js user boss");
+//     console.log(credentials, "<----diauth.js credentials boss");
+//     console.log(typeof credentials.password); // pastikan ini adalah string
+//     console.log(typeof user.password); // pastikan ini juga adalah string
+//     console.log(credentials.password.length); // pastikan panjangnya sesuai
+//     console.log(user.password.length); // pastikan panjangnya sesuai
+//     console.log(user.password, "<----diauth.js userpass boss");
+//     console.log(credentials.password, "<----diauth.js credentialspass boss");
 
-    if (!user) {
-      throw new Error("User not found!");
-    }
+//     if (!user) {
+//       throw new Error("User not found!");
+//     }
 
-    const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password);
+//     const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password);
 
-    console.log(isPasswordCorrect, "<----diauth.js compare password boss");
+//     console.log(isPasswordCorrect, "<----diauth.js compare password boss");
 
-    if (!isPasswordCorrect) throw new Error("Password is incorrect!");
+//     if (!isPasswordCorrect) throw new Error("Password is incorrect!");
 
-    return user;
-  } catch (err) {
-    console.log(err);
-    throw new Error("Failed to login!");
-  }
-};
+//     return user;
+//   } catch (err) {
+//     console.log(err);
+//     throw new Error("Failed to login!");
+//   }
+// };
 
-export const { signIn, signOut, auth } = NextAuth({
-  ...authConfig,
-  providers: [
-    CredentialsProvider({
-      async authorize(credentials) {
-        try {
-          const user = await login(credentials);
-          return user;
-        } catch (err) {
-          return null;
-        }
-      },
-    }),
-  ],
-  callbacks: {
-    async jwt({ token, user }) {
-      if (user) {
-        token.username = user.username;
-        token.img = user.img;
-        token.isAdmin = user.isAdmin;
-      }
-      return token;
-    },
-    async session({ session, token }) {
-      if (token) {
-        session.user.username = token.username;
-        session.user.img = token.img;
-        session.user.isAdmin = token.isAdmin;
-      }
-      return session;
-    },
-  },
-});
+// export const { signIn, signOut, auth } = NextAuth({
+//   ...authConfig,
+//   secret: process.env.AUTH_SECRET,
+//   providers: [
+//     CredentialsProvider({
+//       async authorize(credentials) {
+//         try {
+//           const user = await login(credentials);
+//           return user;
+//         } catch (err) {
+//           return null;
+//         }
+//       },
+//     }),
+//   ],
+//   callbacks: {
+//     async jwt({ token, user }) {
+//       if (user) {
+//         token.username = user.username;
+//         token.img = user.img;
+//         token.isAdmin = user.isAdmin;
+//       }
+//       return token;
+//     },
+//     async session({ session, token }) {
+//       if (token) {
+//         session.user.username = token.username;
+//         session.user.img = token.img;
+//         session.user.isAdmin = token.isAdmin;
+//       }
+//       return session;
+//     },
+//   },
+// });

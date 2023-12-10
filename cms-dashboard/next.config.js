@@ -1,7 +1,7 @@
 // next.config.js
 const nextConfig = {
   images: {
-    domains: ["images.pexels.com", "i.pinimg.com"], // Add 'i.pinimg.com' to the list of domains
+    domains: ["images.pexels.com", "i.pinimg.com", "lh3.googleusercontent.com"],
     // You can keep your existing remotePatterns if needed
     remotePatterns: [
       {

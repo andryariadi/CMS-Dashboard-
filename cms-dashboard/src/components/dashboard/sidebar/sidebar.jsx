@@ -4,6 +4,8 @@ import styles from "./sidebar.module.css";
 import { MdDashboard, MdSupervisedUserCircle, MdShoppingBag, MdAttachMoney, MdWork, MdAnalytics, MdPeople, MdOutlineSettings, MdHelpCenter, MdLogout } from "react-icons/md";
 import userImg from "@/assets/users.png";
 import { auth, signOut } from "@/app/auth";
+import { authUserSession } from "@/libs/auth-libs";
+import Link from "next/link";
 
 const menuItems = [
   {
@@ -68,17 +70,23 @@ const menuItems = [
   },
 ];
 export default async function Sidebar() {
-  const session = await auth();
+  // const session = await auth();
 
-  console.log(session, "<----- session sidebar");
+  // console.log(session, "<----- session sidebar");
+
+  const user = await authUserSession();
+
+  const actionUrl = user ? "/api/auth/signout" : null;
+
+  console.log(user, "<----- user sidebar");
   return (
     <>
       <div className={styles.container}>
         <div className={styles.user}>
-          <Image className={styles.userImage} src={session?.user?.img || userImg} alt="users" width={50} height={50} />
+          <Image className={styles.userImage} src={user?.image || userImg} alt="users" width={50} height={50} />
           <div className={styles.userDetail}>
-            <span className={styles.userName}>{session?.user?.username}</span>
-            <span className={styles.userRole}>{session?.user?.isAdmin ? "Admin" : "User"}</span>
+            <span className={styles.userName}>{user?.name}</span>
+            <span className={styles.userRole}>{user?.isAdmin ? "Admin" : "User"}</span>
           </div>
         </div>
         <ul className={styles.menuList}>
@@ -91,17 +99,10 @@ export default async function Sidebar() {
             </li>
           ))}
         </ul>
-        <form
-          action={async () => {
-            "use server";
-            await signOut();
-          }}
-        >
-          <button className={styles.logout}>
-            <MdLogout />
-            Logout
-          </button>
-        </form>
+        <Link href={actionUrl} className={styles.logout}>
+          <MdLogout />
+          Logout
+        </Link>
       </div>
     </>
   );
