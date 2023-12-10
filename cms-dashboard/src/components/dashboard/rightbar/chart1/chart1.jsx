@@ -8,7 +8,7 @@ const data = [
   { name: "Group D", value: 200 },
 ];
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+const COLORS = ["#116D6E", "#CD1818", "#FFBB28", "#8FBDD3"];
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {

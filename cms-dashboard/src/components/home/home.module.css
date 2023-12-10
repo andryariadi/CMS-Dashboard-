@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+  gap: 20px;
+}
+
+.imgContainer {
+  flex: 1.4;
+  display: flex;
+  justify-content: flex-end;
+  /* background-color: aqua; */
+}
+
+.iconContainer {
+  flex: 1;
+  /* background-color: bisque; */
+  display: flex;
+  gap: 20px;
+}
+
+.login,
+.register {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 2px solid #658dae;
+  color: #90caf9;
+  letter-spacing: 2px;
+  background-color: var(--bgSoft);
+}
