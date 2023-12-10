@@ -45,14 +45,14 @@ export const authOption = {
 
           // Pastikan pengguna ditemukan sebelum mengakses properti
           if (!user) {
-            throw new Error("Pengguna tidak ditemukan");
+            throw new Error("User not found !");
           }
 
           const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password);
 
           // Pastikan kata sandi benar sebelum melanjutkan
           if (!isPasswordCorrect) {
-            throw new Error("Kata sandi salah");
+            throw new Error("Wrong password !");
           }
 
           return {

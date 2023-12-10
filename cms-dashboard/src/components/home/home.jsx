@@ -5,11 +5,12 @@ import Link from "next/link";
 import { RiLoginCircleFill } from "react-icons/ri";
 import { FaUserEdit } from "react-icons/fa";
 import { authUserSession } from "@/libs/auth-libs";
+import { redirect } from "next/navigation";
 
 export default async function HomeComponent() {
   const user = await authUserSession();
 
-  const actionUrl = !user ? "/api/auth/signin" : "/dashboard";
+  const actionUrl = !user ? "/api/auth/signin" : redirect("/dashboard");
 
   console.log(user, "<--- user dihomepageee");
   return (

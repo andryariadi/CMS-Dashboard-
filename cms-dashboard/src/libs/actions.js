@@ -31,8 +31,8 @@ export const register = async (formData) => {
     throw new Error("Failed to register!");
   }
 
-  revalidatePath("/login");
-  redirect("/login");
+  revalidatePath("/");
+  redirect("/");
 };
 export const addUser = async (formData) => {
   const { username, email, password, phone, isAdmin, isActive, address } = Object.fromEntries(formData);
