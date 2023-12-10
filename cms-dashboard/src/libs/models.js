@@ -76,6 +76,34 @@ const productSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+const transactionSchema = new mongoose.Schema({
+  date: {
+    type: Date,
+    required: true,
+  },
+  amount: {
+    type: Number,
+    required: true,
+  },
+  transaction_code: {
+    type: String,
+    required: true,
+  },
+  symbol: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: String,
+    required: true,
+  },
+  total: {
+    type: String,
+    required: true,
+  },
+});
+
 const transactionsSchema = new mongoose.Schema(
   {
     account_id: {
@@ -95,7 +123,14 @@ const transactionsSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
-    transactions: [],
+    status: {
+      type: String,
+      required: true,
+    },
+    transactions: {
+      type: [transactionSchema],
+      required: true,
+    },
   },
   { timestamps: true }
 );

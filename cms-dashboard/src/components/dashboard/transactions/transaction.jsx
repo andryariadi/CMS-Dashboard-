@@ -1,63 +1,45 @@
 import styles from "./transaction.module.css";
 import Image from "next/image";
 import user from "@/assets/users.png";
+import { fetchAllTransaction } from "@/libs/data";
 
-export default function Transaction() {
+export default async function Transaction() {
+  const transactions = await fetchAllTransaction();
+
+  console.log(transactions, "<----dashboard page");
   return (
     <>
       <div className={styles.container}>
         <h2 className={styles.title}>Latest Transactions</h2>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <td>Name</td>
-              <td>Status</td>
-              <td>Date</td>
-              <td>Amount</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <div className={styles.user}>
-                  <Image src={user} alt="users" width={50} height={50} className={styles.userImg} />
-                  Andry Ariadi
-                </div>
-              </td>
-              <td>
-                <span className={`${styles.status} ${styles.pending}`}>Pending</span>
-              </td>
-              <td>02.12.2023</td>
-              <td>$2.300</td>
-            </tr>
-            <tr>
-              <td>
-                <div className={styles.user}>
-                  <Image src={user} alt="users" width={50} height={50} className={styles.userImg} />
-                  Andry Ariadi
-                </div>
-              </td>
-              <td>
-                <span className={`${styles.status} ${styles.done}`}>Done</span>
-              </td>
-              <td>02.12.2023</td>
-              <td>$2.300</td>
-            </tr>
-            <tr>
-              <td>
-                <div className={styles.user}>
-                  <Image src={user} alt="users" width={50} height={50} className={styles.userImg} />
-                  Andry Ariadi
-                </div>
-              </td>
-              <td>
-                <span className={`${styles.status} ${styles.cancelled}`}>Cancelled</span>
-              </td>
-              <td>02.12.2023</td>
-              <td>$2.300</td>
-            </tr>
-          </tbody>
-        </table>
+        <div className={styles.tableContainer}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <td>Name</td>
+                <td>Status</td>
+                <td>Date</td>
+                <td>Amount</td>
+              </tr>
+            </thead>
+            <tbody>
+              {transactions.map((transaction) => (
+                <tr>
+                  <td>
+                    <div className={styles.user}>
+                      <Image src={user} alt="users" width={50} height={50} className={styles.userImg} />
+                      Andry Ariadi
+                    </div>
+                  </td>
+                  <td>
+                    <span className={`${styles.status} ${styles.pending}`}>Pending</span>
+                  </td>
+                  <td>{transaction.bucket_start_date.toString().slice(4, 15)}</td>
+                  <td>$2.300</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </>
   );

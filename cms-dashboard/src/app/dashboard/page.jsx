@@ -11,7 +11,7 @@ export default async function Dashboard() {
   const transactions = await fetchAllTransaction();
 
   console.log(users.length, products.length, transactions.length, "<----dashboard page");
-  console.log(transactions, "<----dashboard page");
+
   return (
     <>
       <div className={styles.wrapper}>
