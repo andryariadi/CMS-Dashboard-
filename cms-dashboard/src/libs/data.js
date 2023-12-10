@@ -1,6 +1,16 @@
-import { Product, User } from "./models";
+import { Product, Transaction, User } from "./models";
 import { connectToDB } from "./utility";
 
+export const fetchAllTransaction = async () => {
+  try {
+    connectToDB();
+    const transactions = await Transaction.find();
+    return transactions;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch all transactions!");
+  }
+};
 export const fetchAllUser = async () => {
   try {
     connectToDB();
