@@ -5,7 +5,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Dashboard CMS",
-  description: "Dashboard CMS with Next.js",
+  description: "Andry Ariadi Dashboard CMS with Next.js",
 };
 
 export default function RootLayout({ children }) {
