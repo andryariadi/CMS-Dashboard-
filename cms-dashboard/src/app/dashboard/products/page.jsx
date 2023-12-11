@@ -40,7 +40,7 @@ export default async function ProductPage({ searchParams }) {
             </tr>
           </thead>
           {products.map((product) => (
-            <tbody>
+            <tbody key={product.id}>
               <tr key={product.id}>
                 <td>
                   <div className={styles.product}>
