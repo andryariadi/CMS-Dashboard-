@@ -10,8 +10,8 @@ export default function AddProductPage() {
           <select name="category" id="category">
             <option value="general">Choose Category</option>
             <option value="electronic">Electronic</option>
-            <option value="men's clothing">Men's clothing</option>
-            <option value="women's clothing">Women's clothing</option>
+            <option value="men clothing">Men clothing</option>
+            <option value="women clothing">Women clothing</option>
           </select>
           <input type="number" placeholder="Price" name="price" required />
           <input type="number" placeholder="Stock" name="stock" required />
