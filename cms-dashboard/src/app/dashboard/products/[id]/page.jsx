@@ -7,7 +7,7 @@ export default async function DetailProductPage({ params }) {
   const { id } = params;
   const product = await fetchDetailProduct(id);
 
-  console.log(product, "<----didetailproduct page");
+  // console.log(product, "<----didetailproduct page");
 
   return (
     <>
@@ -37,11 +37,11 @@ export default async function DetailProductPage({ params }) {
               <option value="electronic" selected={product.category}>
                 Electronic
               </option>
-              <option value="men's clothing" selected={product.category}>
-                Men's clothing
+              <option value="men clothing" selected={product.category}>
+                Men clothing
               </option>
-              <option value="women's clothing" selected={product.category}>
-                Women's clothing
+              <option value="women clothing" selected={product.category}>
+                Women clothing
               </option>
             </select>
             <label>Description</label>

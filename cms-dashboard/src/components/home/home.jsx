@@ -12,7 +12,7 @@ export default async function HomeComponent() {
 
   const actionUrl = !user ? "/api/auth/signin" : redirect("/dashboard");
 
-  console.log(user, "<--- user dihomepageee");
+  // console.log(user, "<--- user dihomepageee");
   return (
     <>
       <div className={styles.container}>

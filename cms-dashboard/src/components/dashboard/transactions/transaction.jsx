@@ -6,7 +6,7 @@ import { fetchAllTransaction } from "@/libs/data";
 export default async function Transaction() {
   const transactions = await fetchAllTransaction();
 
-  console.log(transactions, "<----dashboard page");
+  // console.log(transactions, "<----dashboard page");
   return (
     <>
       <div className={styles.container}>
@@ -23,7 +23,7 @@ export default async function Transaction() {
             </thead>
             <tbody>
               {transactions.map((transaction) => (
-                <tr>
+                <tr key={transaction.id}>
                   <td>
                     <div className={styles.user}>
                       <Image src={user} alt="users" width={50} height={50} className={styles.userImg} />
