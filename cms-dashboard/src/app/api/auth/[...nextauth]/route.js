@@ -25,7 +25,7 @@ export const authOption = {
       credentials: {
         username: { label: "Username", type: "text", placeholder: "yourname" },
         email: { label: "Email", type: "email", placeholder: "youremail@example.com" },
-        password: { label: "Password", type: "password", placeholder: "*********" },
+        password: { label: "Password", type: "password", placeholder: "********" },
       },
       async authorize(credentials) {
         try {
